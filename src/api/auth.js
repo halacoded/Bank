@@ -7,7 +7,7 @@ const login = async (userInfo) => {
       "/mini-project/api/auth/login",
       userInfo
     );
-    // storeToken(data.token); // <--- This
+    storeToken(data.token); // <--- This
     return data;
   } catch (error) {
     console.log(error);
@@ -23,7 +23,7 @@ const register = async (userInfo) => {
       "/mini-project/api/auth/register",
       formData
     );
-    // storeToken(data.token); // <--- This
+    storeToken(data.token); // <--- This
     return data;
   } catch (error) {
     console.log(error);
