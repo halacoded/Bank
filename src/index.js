@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Register />,
       },
       {
         path: "/Profile",
@@ -36,8 +36,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/Register",
-        element: <Register />,
+        path: "/Home",
+        element: <Home />,
       },
       {
         path: "/Users",
@@ -54,13 +54,6 @@ root.render(
     </QueryClientProvider>
   </React.StrictMode>
 );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <RouterProvider router={router} />
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
 
 // // If you want to start measuring performance in your app, pass a function
 // // to log results (for example: reportWebVitals(console.log))

@@ -3,6 +3,10 @@ import { login } from "../api/auth";
 import { useMutation } from "@tanstack/react-query";
 import UserContext from "../context/UserContext";
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import Banklogo from "../assets/data/a-linear-design-icon-of-bank-building-vector.jpg";
+import Bankimage from "../assets/data/4957136.jpg";
+import { Link } from "react-router-dom";
 export const Login = () => {
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(UserContext);
@@ -13,9 +17,9 @@ export const Login = () => {
       setUser(true);
     },
   });
-  // if (user) {
-  //   return <Navigate to="/" />;
-  // }
+  if (user) {
+    return <Navigate to="/Home" />;
+  }
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -25,18 +29,28 @@ export const Login = () => {
   };
   return (
     <div>
-      {" "}
-      <div className="bg-gray-900 min-h-screen flex items-center justify-center absolute inset-0 z-[-1]">
-        <div className="max-w-md w-full px-6 py-8 bg-gray-800 rounded-md shadow-md">
-          <h2 className="text-3xl text-white font-semibold mb-6">Login</h2>
+      {/* Logo */}
+      <div className="flex gap-3">
+        <img src={Banklogo} className="h-10 w-10" alt="bank" />
+
+        <h1 className="mt-3">H&H Bank</h1>
+      </div>
+      {/*Log in*/}
+      <div className="flex items-center justify-center gap-10 h-lvh ">
+        <div className="flex flex-col  items-center justify-center">
+          <h1 className="text-blue-500 font-bold size">Login</h1>
+          <p>
+            Don't have account ?<></>
+            <Link
+              to="/"
+              className="text-blue-500 hover:text-sm hover:underline"
+            >
+              Register
+            </Link>
+          </p>
           <form onSubmit={handleFormSubmit}>
-            <div className="mb-4">
-              <label
-                htmlFor="username"
-                className="block text-white text-sm font-medium mb-2"
-              >
-                username
-              </label>
+            <div>
+              <label htmlFor="username">username</label>
               <input
                 type="username"
                 name="username"
@@ -47,12 +61,7 @@ export const Login = () => {
               />
             </div>
             <div className="mb-6">
-              <label
-                htmlFor="password"
-                className="block text-white text-sm font-medium mb-2"
-              >
-                Password
-              </label>
+              <label htmlFor="password">Password</label>
               <input
                 name="password"
                 type="password"
@@ -71,6 +80,9 @@ export const Login = () => {
               </button>
             </div>
           </form>
+        </div>
+        <div>
+          <img src={Bankimage} alt="bank" className="w-96 h-96" />
         </div>
       </div>
     </div>

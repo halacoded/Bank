@@ -39,4 +39,19 @@ const getAllUsers = async () => {
   return data;
 };
 
-export { login, register, me, getAllUsers };
+const updateProfileImage = async (Profileimage) => {
+  try {
+    const formData = new FormData();
+    formData.append("image", Profileimage);
+    // END
+    const { data } = await instance.put(
+      "/mini-project/api/auth/profile",
+      formData
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { login, register, me, getAllUsers, updateProfileImage };
