@@ -54,4 +54,35 @@ const updateProfileImage = async (Profileimage) => {
   }
 };
 
-export { login, register, me, getAllUsers, updateProfileImage };
+const Deposit = async (amount) => {
+  try {
+    const { data } = await instance.put(
+      "/mini-project/api/transactions/deposit",
+      { amount }
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const Withdraw = async (amount) => {
+  try {
+    const { data } = await instance.put(
+      "/mini-project/api/transactions/withdraw",
+      { amount }
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export {
+  login,
+  register,
+  me,
+  getAllUsers,
+  Withdraw,
+  Deposit,
+  updateProfileImage,
+};
