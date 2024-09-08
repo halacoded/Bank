@@ -7,10 +7,11 @@ const Home = () => {
   const queryClinet = useQueryClient();
   const [amount, setAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("");
-  const { data: user } = useQuery({
+  const { data: user, isLoading } = useQuery({
     queryKey: ["me"],
     queryFn: me,
   });
+
   const { mutate: Depo } = useMutation({
     mutationKey: ["Deposit"],
     mutationFn: () => Deposit(amount),
@@ -40,33 +41,31 @@ const Home = () => {
     }
     setTransactionType("");
   };
-
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     //container
     <div>
-      {/* cards container*/}
+      {/* cards container/} */}
       <div className="flex items-center justify-center flex-col gap-6">
-        {/*balance card */}
-        <div className="flex flex-col items-center justify-center border-solid border-black  rounded-5 w-80  h-50 shadow-md gap-5">
+        {/* {/balance card /} */}
+        <div className="bg-red-50 flex flex-col items-center justify-center border-solid border-black  rounded-5 w-80  h-50 shadow-md gap-5 ">
+          <h1>Your Balance :</h1>
           <h1>{user?.balance}</h1>
         </div>
-        {/*deposite withdraw card */}
+        {/* {/deposite withdraw card */}
         <div className="bg-red-50 flex flex-col items-center justify-center border-solid border-black  rounded-5 w-80  h-50 shadow-md gap-5">
           {" "}
           <div>
             <h1>Chose Type Of Transaction</h1>
           </div>
           <div className="gap-7">
-            <button
-              className="mr-5 bg-slate-600 hover:bg-blue-500 "
-              onClick={() => {
-                handleTransaction("Deposite");
-              }}
-            >
+            <button className="mr-5  bg-white hover:bg-blue-500 rounded-6 shadow-md">
               Deposite
             </button>
             <button
-              className="mr-5 bg-purple-600"
+              className="mr-5  bg-white hover:bg-blue-500 rounded-6 shadow-md"
               onClick={() => {
                 handleTransaction("withdraw");
               }}
