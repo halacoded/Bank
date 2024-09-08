@@ -80,12 +80,12 @@ const Withdraw = async (amount) => {
 const Transfermoney = async (amount, username) => {
   const { data } = await instance.put(
     `/mini-project/api/transactions/transfer/${username}`,
-    amount
+    { amount, username }
   );
   return data;
 };
 
-const Transactions = async () => {
+const getTransactions = async () => {
   const { data } = await instance.get("/mini-project/api/transactions/my");
   return data;
 };
@@ -99,5 +99,5 @@ export {
   Deposit,
   updateProfileImage,
   Transfermoney,
-  Transactions,
+  getTransactions,
 };

@@ -13,7 +13,7 @@ const User = () => {
 
   //<h2 className="text-3xl text-white font-semibold mb-6 ">Users</h2>
   const { mutate } = useMutation({
-    mutationKey: [""],
+    mutationKey: ["Transfermoney"],
     //empty becuse its will get input value
     mutationFn: (username) => Transfermoney(userAmount, username),
   });

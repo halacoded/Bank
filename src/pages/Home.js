@@ -61,7 +61,12 @@ const Home = () => {
             <h1>Chose Type Of Transaction</h1>
           </div>
           <div className="gap-7">
-            <button className="mr-5  bg-white hover:bg-blue-500 rounded-6 shadow-md">
+            <button
+              className="mr-5  bg-white hover:bg-blue-500 rounded-6 shadow-md"
+              onClick={() => {
+                handleTransaction("Deposite");
+              }}
+            >
               Deposite
             </button>
             <button
