@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { getAllUsers, Transfermoney } from "../api/auth";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 const User = () => {
   //store the amount when typed in the input
   const [userAmount, setUserAmount] = useState(0);
+  const queryClient = useQueryClient();
 
   const { data: users } = useQuery({
     queryKey: ["users"],
@@ -16,6 +17,9 @@ const User = () => {
     mutationKey: ["Transfermoney"],
     //empty becuse its will get input value
     mutationFn: (username) => Transfermoney(userAmount, username),
+    onSuccess: () => {
+      queryClient.invalidateQueries([""]);
+    },
   });
 
   const handleChange = (e) => {

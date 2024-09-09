@@ -33,7 +33,7 @@ const Register = () => {
     // <Navigat></Navigat>
   };
   if (user) {
-    return <Navigate to="/Home" />;
+    return <Navigate to="/" />;
   }
   return (
     <div className="">
@@ -52,7 +52,7 @@ const Register = () => {
           <p>
             Already registered? <></>
             <Link
-              to="/login"
+              to="/auth/login"
               className="text-blue-500 hover:text-sm hover:underline"
             >
               Login

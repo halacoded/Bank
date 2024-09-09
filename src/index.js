@@ -11,6 +11,9 @@ import Home from "./pages/Home";
 import Transactions from "./pages/Transactions";
 import Users from "./pages/Users";
 import Profile from "./pages/Profile";
+import About from "./pages/About";
+import Auth from "./pages/Auth";
+import Main from "./pages/Main";
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,30 +21,47 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+
     children: [
       {
+        path: "/Auth",
+        element: <Auth />,
+        children: [
+          {
+            path: "Register",
+            element: <Register />,
+          },
+          {
+            path: "Login",
+            element: <Login />,
+          },
+        ],
+      },
+      {
         path: "/",
-        element: <Register />,
-      },
-      {
-        path: "/Profile",
-        element: <Profile />,
-      },
-      {
-        path: "/Transactions",
-        element: <Transactions />,
-      },
-      {
-        path: "/Login",
-        element: <Login />,
-      },
-      {
-        path: "/Home",
-        element: <Home />,
-      },
-      {
-        path: "/Users",
-        element: <Users />,
+        element: <Main />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+          {
+            path: "Profile",
+            element: <Profile />,
+          },
+          {
+            path: "Transactions",
+            element: <Transactions />,
+          },
+          {
+            path: "Users",
+            element: <Users />,
+          },
+          {
+            path: "About",
+            element: <About />,
+          },
+        ],
       },
     ],
   },

@@ -18,7 +18,7 @@ export const Login = () => {
     },
   });
   if (user) {
-    return <Navigate to="/Home" />;
+    return <Navigate to="/" />;
   }
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));

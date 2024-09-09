@@ -44,25 +44,26 @@ const Home = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   return (
     //container
     <div>
-      {/* cards container/} */}
-      <div className="flex items-center justify-center flex-col gap-6">
-        {/* {/balance card /} */}
-        <div className="bg-red-50 flex flex-col items-center justify-center border-solid border-black  rounded-5 w-80  h-50 shadow-md gap-5 ">
+      <div className="flex items-center justify-center flex-col gap-20 h-96">
+        <div className="bg-white flex flex-col items-center justify-center border-solid border-black  rounded-5 w-80  h-50 shadow-md gap-5 ">
           <h1>Your Balance :</h1>
           <h1>{user?.balance}</h1>
         </div>
-        {/* {/deposite withdraw card */}
-        <div className="bg-red-50 flex flex-col items-center justify-center border-solid border-black  rounded-5 w-80  h-50 shadow-md gap-5">
+
+        <div className="bg-white flex flex-col items-center justify-center border-solid border-black  rounded-5 w-80  h-50 shadow-md gap-5">
           {" "}
           <div>
             <h1>Chose Type Of Transaction</h1>
           </div>
           <div className="gap-7">
             <button
-              className="mr-5  bg-white hover:bg-blue-500 rounded-6 shadow-md"
+              className={`mr-5 hover:bg-blue-500 rounded-6 shadow-md ${
+                transactionType === "Deposite" ? "bg-blue-700" : " bg-white"
+              }`}
               onClick={() => {
                 handleTransaction("Deposite");
               }}
@@ -70,7 +71,9 @@ const Home = () => {
               Deposite
             </button>
             <button
-              className="mr-5  bg-white hover:bg-blue-500 rounded-6 shadow-md"
+              className={`mr-5  hover:bg-blue-500 rounded-6 shadow-md ${
+                transactionType === "withdraw" ? "bg-blue-700" : "bg-white"
+              }`}
               onClick={() => {
                 handleTransaction("withdraw");
               }}
